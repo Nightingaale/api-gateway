@@ -1,5 +1,6 @@
 package org.nightingaale.gateway.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
@@ -12,17 +13,19 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 @EnableWebFluxSecurity
 public class SecurityConfig {
 
-    public JwtDecoder jwtDecoder() {
+    @Bean
+    public JwtDecoder JwtDecoder() {
         return NimbusJwtDecoder.withJwkSetUri("http://auth-service:8090/realms/auth-service/protocol/openid-connect/certs")
                 .build();
     }
 
+    @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         return http
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .authorizeExchange(exchange -> exchange
                         .pathMatchers("/api/v1/auth/**").permitAll()
-                        .pathMatchers("/v1/openapi-docs/**", "/swagger-ui/**", "/openapi-docs/**").permitAll()
+                        .pathMatchers("/v1/openapi-docs/**", "/swagger-ui/**", "/openapi-docs/**", "/aggregate/**", "/actuator/**").permitAll()
                         .anyExchange().authenticated()
                 )
                 .oauth2ResourceServer((oauth2) -> oauth2

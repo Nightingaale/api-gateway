@@ -34,7 +34,7 @@ Ensure you have the following installed:
   ```
 
 ### Installation
-
+(WARNING!) Be sure that your Eureka Server is available
 1. Clone the repository:
    ```sh
    git clone https://github.com/Nightingaale/api-gateway.git
@@ -55,7 +55,11 @@ Ensure you have the following installed:
    ```sh
    ./gradlew bootrun
    ```
-6. Verify all services are running:
+6. Verify service is running:
    ```sh
    docker ps
    ```
+7. Configure Vault:
+- The service will be accessible at http://localhost:8200
+- Method: Token
+- Token: root

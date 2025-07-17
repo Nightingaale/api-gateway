@@ -1,5 +1,7 @@
 package org.nightingaale.gateway.config;
 
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -13,9 +15,12 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 @EnableWebFluxSecurity
 public class SecurityConfig {
 
+    @Value("${keycloak.jwk-certs}")
+    private String keycloakJwkCerts;
+
     @Bean
     public ReactiveJwtDecoder jwtDecoder() {
-        return NimbusReactiveJwtDecoder.withJwkSetUri("http://auth-service:8090/realms/auth-service/protocol/openid-connect/certs")
+        return NimbusReactiveJwtDecoder.withJwkSetUri(keycloakJwkCerts)
                 .build();
     }
 

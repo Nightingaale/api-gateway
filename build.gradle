@@ -3,9 +3,6 @@ plugins {
     id 'org.springframework.boot' version '3.5.0'
     id 'io.spring.dependency-management' version '1.1.7'
 }
-ext {
-    springCloudVersion = "2025.0.0"
-}
 
 group = 'org.nightingaale'
 version = '0.0.1-SNAPSHOT'
@@ -36,6 +33,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.security:spring-security-oauth2-jose'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
+
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
 
     implementation 'org.springframework.cloud:spring-cloud-starter-circuitbreaker-reactor-resilience4j'

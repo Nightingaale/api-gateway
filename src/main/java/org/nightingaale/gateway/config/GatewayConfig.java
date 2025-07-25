@@ -33,9 +33,9 @@ public class GatewayConfig {
                         .uri("lb://auth-service"))
 
                 .route("user_service", r -> r.path("/api/v1/users/**")
-                .filters(f -> f.circuitBreaker(c -> c.setName("userServiceCircuitBreaker")
-                        .setFallbackUri("forward:/fallbackRoute")))
-                .uri("lb://user-service"))
+                        .filters(f -> f.circuitBreaker(c -> c.setName("userServiceCircuitBreaker")
+                                .setFallbackUri("forward:/fallbackRoute")))
+                        .uri("lb://user-service"))
 
                 .build();
     }

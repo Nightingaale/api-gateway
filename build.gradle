@@ -45,6 +45,8 @@ dependencies {
     implementation 'org.springdoc:springdoc-openapi-starter-webflux-api:2.8.4'
     implementation 'org.springdoc:springdoc-openapi-starter-webflux-ui:2.8.4'
 
+    runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
+
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

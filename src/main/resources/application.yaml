@@ -7,8 +7,8 @@ springdoc:
   swagger-ui:
     path: /swagger-ui.html
     urls:
-      - name: auth-service
-        url: /aggregate/auth-service/v1/openapi-docs
+      - name: api-gateway
+        url: /aggregate/api-gateway/v1/openapi-docs
 
 spring:
   application:

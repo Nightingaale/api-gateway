@@ -1,15 +1,6 @@
 server:
   port: 4000
 
-springdoc:
-  api-docs:
-    path: /openapi-docs
-  swagger-ui:
-    path: /swagger-ui.html
-    urls:
-      - name: auth-service
-        url: /aggregate/auth-service/v1/openapi-docs
-
 spring:
   application:
     name: api-gateway

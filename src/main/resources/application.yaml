@@ -1,6 +1,16 @@
 server:
   port: 4000
 
+springdoc:
+  api-docs:
+    path: /openapi-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    urls:
+      - name: api-gateway
+        url: /aggregate/api-gateway/v1/openapi-docs
+
+
 spring:
   application:
     name: api-gateway
@@ -37,3 +47,9 @@ resilience4j:
     configs:
       default:
         timeout-duration: 3s
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus

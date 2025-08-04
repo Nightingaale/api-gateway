@@ -21,12 +21,6 @@ public class GatewayConfig {
     public RouteLocator customRoutes(RouteLocatorBuilder builder) {
         return builder.routes()
 
-                // Swagger(example)
-                .route("auth_service_docs", r -> r.path("/aggregate/auth-service/v1/openapi-docs")
-                        .filters(f -> f.rewritePath("/aggregate/auth-service/v1/openapi-docs", "/v1/openapi-docs"))
-                        .uri("lb://auth-service"))
-
-                // Main path
                 .route("auth_service", r -> r.path("/api/v1/auth/**")
                         .filters(f -> f.circuitBreaker(c -> c.setName("authServiceCircuitBreaker")
                                 .setFallbackUri("forward:/fallbackRoute")))

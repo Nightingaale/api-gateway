@@ -31,7 +31,6 @@ public class GatewayConfig {
                         .filters(f -> f.circuitBreaker(c -> c.setName("userServiceCircuitBreaker")
                                 .setFallbackUri("forward:/fallbackRoute")))
                         .uri("lb://user-service"))
-
                 .build();
     }
 

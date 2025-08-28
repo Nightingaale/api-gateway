@@ -37,3 +37,9 @@ resilience4j:
     configs:
       default:
         timeout-duration: 3s
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus

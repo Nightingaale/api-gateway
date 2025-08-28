@@ -1,9 +1,9 @@
 spring:
   config:
-    import: vault://secret/dev/api-gateway
+    import: vault://secret/prod/api-gateway
   cloud:
     vault:
-      uri: http://localhost:8200
+      uri: http://vault:8200
       authentication: token
       token: root
       kv:

@@ -21,3 +21,39 @@ A Spring Cloud Gateway microservice that acts as a single entry point for client
   gradle --version
   docker --version
   ```
+
+## Getting Started
+Set up API-gateway locally using Docker Compose for the dev environment.
+
+### Installation
+
+(WARNING!) Be sure that your Eureka Server is available
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/Nightingaale/api-gateway.git
+   ```
+2. Move to the project directory:
+   ```sh
+   cd api-gateway
+   ```
+3. Build microservice with Gradle:
+    ```sh
+   ./gradlew build
+   ```
+4. Start the dev environment with Docker Compose:
+   ```sh
+   docker-compose up -d
+   ```
+5. Start your microservice:
+   ```sh
+   ./gradlew bootrun
+   ```
+6. Verify service is running:
+   ```sh
+   docker ps
+   ```
+7. Configure Vault:
+- The service will be accessible at http://localhost:8200
+- Method: Token
+- Token: root

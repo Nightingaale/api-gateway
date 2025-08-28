@@ -21,7 +21,6 @@ public class GatewayConfig {
     public RouteLocator customRoutes(RouteLocatorBuilder builder) {
         return builder.routes()
 
-                // Main path
                 .route("auth_service", r -> r.path("/api/v1/auth/**")
                         .filters(f -> f.circuitBreaker(c -> c.setName("authServiceCircuitBreaker")
                                 .setFallbackUri("forward:/fallbackRoute")))
@@ -31,6 +30,16 @@ public class GatewayConfig {
                         .filters(f -> f.circuitBreaker(c -> c.setName("userServiceCircuitBreaker")
                                 .setFallbackUri("forward:/fallbackRoute")))
                         .uri("lb://user-service"))
+
+                .route("order_service", r -> r.path("/api/v1/orders/**")
+                        .filters(f -> f.circuitBreaker(c -> c.setName("orderServiceCircuitBreaker")
+                                .setFallbackUri("forward:/fallbackRoute")))
+                        .uri("lb://order-service"))
+
+                .route("payment_service", r -> r.path("/api/v1/payment/**")
+                        .filters(f -> f.circuitBreaker(c -> c.setName("paymentServiceCircuitBreaker")
+                                .setFallbackUri("forward:/fallbackRoute")))
+                        .uri("lb://payment-service"))
                 .build();
     }
 

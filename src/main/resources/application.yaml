@@ -1,10 +1,6 @@
 server:
   port: 4000
 
-springdoc:
-  swagger-ui:
-    path: /swagger-ui.html
-
 spring:
   application:
     name: api-gateway
@@ -41,9 +37,3 @@ resilience4j:
     configs:
       default:
         timeout-duration: 3s
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: prometheus

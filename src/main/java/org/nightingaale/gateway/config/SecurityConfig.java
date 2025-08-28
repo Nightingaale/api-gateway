@@ -15,7 +15,7 @@ public class SecurityConfig {
 
     @Bean
     public ReactiveJwtDecoder jwtDecoder() {
-        return NimbusReactiveJwtDecoder.withJwkSetUri("http://keycloak:8080/realms/auth-service/protocol/openid-connect/certs")
+        return NimbusReactiveJwtDecoder.withJwkSetUri("http://localhost:8080/realms/auth-service/protocol/openid-connect/certs")
                 .build();
     }
 
@@ -25,7 +25,7 @@ public class SecurityConfig {
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .authorizeExchange(exchange -> exchange
                         .pathMatchers("/api/v1/auth/**").permitAll()
-                        .pathMatchers("/swagger-ui/**","/aggregate/**", "/actuator/**").permitAll()
+                        .pathMatchers("/aggregate/**", "/actuator/**").permitAll()
                         .anyExchange().authenticated()
                 )
                 .oauth2ResourceServer((oauth2) -> oauth2

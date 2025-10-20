@@ -1,7 +1,7 @@
 # API-gateway (Production)
 A Spring Cloud Gateway microservice that acts as a single entry point for client requests, efficiently routing them to the microservices
 <p align="left">
-  <img src="https://skillicons.dev/icons?i=java,spring,docker,gradle,prometheus,git"/>
+  <img src="https://go-skill-icons.vercel.app/api/icons?i=java,spring,docker,gradle,prometheus,git"/>
 </p>
 
 # Features

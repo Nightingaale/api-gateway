@@ -1,4 +1,5 @@
 package org.nightingaale.gateway.config;
+
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
@@ -31,7 +32,7 @@ public class GatewayConfig {
                                 .setFallbackUri("forward:/fallbackRoute")))
                         .uri("lb://user-service"))
 
-                .route("order_service", r -> r.path("/api/v1/orders/**")
+                .route("order_service", r -> r.path("/api/v1/order/**")
                         .filters(f -> f.circuitBreaker(c -> c.setName("orderServiceCircuitBreaker")
                                 .setFallbackUri("forward:/fallbackRoute")))
                         .uri("lb://order-service"))
@@ -40,6 +41,11 @@ public class GatewayConfig {
                         .filters(f -> f.circuitBreaker(c -> c.setName("paymentServiceCircuitBreaker")
                                 .setFallbackUri("forward:/fallbackRoute")))
                         .uri("lb://payment-service"))
+
+                .route("catalog_service", r -> r.path("/api/v1/catalog/**")
+                        .filters(f -> f.circuitBreaker(c -> c.setName("catalogServiceCircuitBreaker")
+                                .setFallbackUri("forward:/fallbackRoute")))
+                        .uri("lb://catalog-service"))
                 .build();
     }
 

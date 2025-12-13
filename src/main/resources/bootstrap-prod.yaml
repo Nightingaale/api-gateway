@@ -3,13 +3,11 @@ spring:
     import: vault://secret/prod/api-gateway
   cloud:
     vault:
-      uri: https://vault:8200
-      authentication: kubernetes
-      kubernetes:
-        role: api-gateway-prod
-        service-account-token-file: /var/run/secrets/kubernetes.io/serviceaccount/token
+      uri: http://vault:8200
+      authentication: token
+      token: root
       kv:
         enabled: true
         backend: secret
-        application-name: prod/api-gateway
+        application-name: api-gateway
       enabled: true

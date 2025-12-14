@@ -5,7 +5,7 @@ spring:
   application:
     name: api-gateway
   profiles:
-    active: prod, k8s
+    active: prod
   threads:
     virtual:
       enabled: true
